@@ -14,4 +14,4 @@ Simple Quran API with media audio ***Syekh. Mishary Rashid Alafasy murrotal***.
 MIT
 
 ---
-Copyright © 2019 by Sutan Gading Fadhillah Nasution
+Copyright © 2020 by Sutan Gading Fadhillah Nasution
