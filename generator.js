@@ -1,6 +1,6 @@
 require('dotenv').config()
 const { writeFile } = require('fs').promises
-const fetch =  require('node-fetch')
+const fetch = require('node-fetch')
 const idSurahTranslations = require('./data/surah-id.json')
 
 const mappingAyah = ({ number, text }) => ({ number, text })
@@ -15,14 +15,15 @@ const getSurah = (surah, edition = ['ar.alafasy', 'en.transliteration', 'id.indo
 
 const operate = async (surah, tryFlag = false) => {
     try {
-        const { code, status, data } = await (await getSurah(surah)).json()
+        const response = await (await getSurah(surah)).text()
+        const { code, status, data } = JSON.parse(response.replace(/\\u/g, '==='))
         const [arab, latin, id] = data
 
         if (code !== 200) throw { surah, code, status }
         if (tryFlag) console.log(`\n Retrying at surah: ${surah}`)
 
         process.stdout.write(`> (${code}:${status}). Operating on surah ${surah}:${arab.englishName}... `)
-        
+
         delete arab.edition
         
         const latinAyahs = latin.ayahs.map(mappingAyah)
@@ -55,7 +56,7 @@ async function main() {
     console.log('\nFetching all surah (DONE).')
     process.stdout.write('\n> Writing Data..')
     
-    await writeFile('./data/al-quran.json', JSON.stringify({
+    const data = JSON.stringify({
         license: `(MIT) Sutan Nasution <sutan.gnst@gmail.com>`,
         audioEdition: 'Syekh. Mishary Rashid Alafasy',
         data: response.map(data => ({
@@ -67,8 +68,9 @@ async function main() {
                 .text,
             ...data
         }))
-    }))
+    })
 
+    await writeFile('./data/al-quran.json', data.replace(/===/g, '\\u'))
     console.log(`\n> Writed ${response.length} surah.\n`)
     console.log('Generate Done!')
 }

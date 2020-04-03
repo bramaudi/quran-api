@@ -7,10 +7,16 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "operate": "node generator.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "generate": "node generator.js"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }
