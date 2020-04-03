@@ -1,6 +1,7 @@
 require('dotenv').config()
 const { writeFile } = require('fs').promises
 const fetch =  require('node-fetch')
+const idSurahTranslations = require('./data/surah-id.json')
 
 const mappingAyah = ({ number, text }) => ({ number, text })
 
@@ -54,10 +55,18 @@ async function main() {
     console.log('\nFetching all surah (DONE).')
     process.stdout.write('\n> Writing Data..')
     
-    await writeFile('al-quran.json', JSON.stringify({
+    await writeFile('./data/al-quran.json', JSON.stringify({
         license: `(MIT) Sutan Nasution <sutan.gnst@gmail.com>`,
         audioEdition: 'Syekh. Mishary Rashid Alafasy',
-        data: response
+        data: response.map(data => ({
+            idRevelationType: data.revelationType === 'Meccan'
+                ? 'Mekah'
+                : 'Madinah',
+            idNameTranslation: idSurahTranslations
+                .find(({ number }) => number === data.number)
+                .text,
+            ...data
+        }))
     }))
 
     console.log(`\n> Writed ${response.length} surah.\n`)
