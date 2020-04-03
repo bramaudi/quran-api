@@ -7,8 +7,9 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "nodemon server.js",
+    "build": "yarn",
     "start": "node server.js",
+    "dev": "nodemon server.js",
     "generate": "node generator.js"
   },
   "dependencies": {
