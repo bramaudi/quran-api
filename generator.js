@@ -10,14 +10,14 @@ const findAyah = ayah => ({ number }) => ayah === number
 const range = (start, end) =>
     start === end ? [start] : [start, ...range(start + 1, end)]
 
-const getSurah = (surah, edition = ['ar.alafasy', 'en.transliteration', 'id.indonesian']) =>
+const getSurah = (surah, edition = ['ar.alafasy', 'en.transliteration', 'en.sahih', 'id.indonesian']) =>
     fetch(`${process.env.API_BASEURL}/surah/${surah}/editions/${edition.join(',')}`)
 
 const operate = async (surah, tryFlag = false) => {
     try {
         const response = await (await getSurah(surah)).text()
         const { code, status, data } = JSON.parse(response.replace(/\\u/g, '==='))
-        const [arab, latin, id] = data
+        const [arab, latin, english, id] = data
 
         if (code !== 200) throw { surah, code, status }
         if (tryFlag) console.log(`\n Retrying at surah: ${surah}`)
@@ -27,7 +27,9 @@ const operate = async (surah, tryFlag = false) => {
         delete arab.edition
         
         const latinAyahs = latin.ayahs.map(mappingAyah)
+        const englishAyahs = english.ayahs.map(mappingAyah)
         const idAyahs = id.ayahs.map(mappingAyah)
+
         const result = {
             ...arab,
             ayahs: arab.ayahs.map(ayah => ({
@@ -35,6 +37,7 @@ const operate = async (surah, tryFlag = false) => {
                 text: {
                     arab: ayah.text,
                     latin: latinAyahs.find(findAyah(ayah.number)).text,
+                    en: englishAyahs.find(findAyah(ayah.number)).text,
                     id: idAyahs.find(findAyah(ayah.number)).text
                 }
             }))
