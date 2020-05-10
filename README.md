@@ -13,5 +13,14 @@ Simple Quran API with media audio ***Syekh. Mishary Rashid Alafasy murrotal***.
 ### LICENSE
 MIT
 
+### Support
+
+#### Global
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B71P7PB)
+
+#### Indonesia
+- [Trakteer](https://trakteer.id/sutanlab)
+- [Karyakarsa](https://karyakarsa.com/sutanlab)
+
 ---
 Copyright © 2020 by Sutan Gading Fadhillah Nasution
