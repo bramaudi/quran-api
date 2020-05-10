@@ -15,10 +15,10 @@ MIT
 
 ### Support
 
-#### Global
+#### 1. Global
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B71P7PB)
 
-#### Indonesia
+#### 2. Indonesia
 - [Trakteer](https://trakteer.id/sutanlab)
 - [Karyakarsa](https://karyakarsa.com/sutanlab)
 
