@@ -1,17 +1,11 @@
-require('dotenv').config()
 const { writeFile } = require('fs').promises
 const fetch = require('node-fetch')
+const { findByNumber, mappingAyah, range } = require('./helpers')
+const { API_BASEURL } = require('./constant')
 const idSurahTranslations = require('./data/surah-id.json')
 
-const mappingAyah = ({ number, text }) => ({ number, text })
-
-const findAyah = ayah => ({ number }) => ayah === number
-
-const range = (start, end) =>
-    start === end ? [start] : [start, ...range(start + 1, end)]
-
 const getSurah = (surah, edition = ['ar.alafasy', 'en.transliteration', 'en.sahih', 'id.indonesian']) =>
-    fetch(`${process.env.API_BASEURL}/surah/${surah}/editions/${edition.join(',')}`)
+    fetch(`${API_BASEURL}/surah/${surah}/editions/${edition.join(',')}`)
 
 const operate = async (surah, tryFlag = false) => {
     try {
@@ -36,9 +30,9 @@ const operate = async (surah, tryFlag = false) => {
                 ...ayah,
                 text: {
                     arab: ayah.text,
-                    latin: latinAyahs.find(findAyah(ayah.number)).text,
-                    en: englishAyahs.find(findAyah(ayah.number)).text,
-                    id: idAyahs.find(findAyah(ayah.number)).text
+                    latin: latinAyahs.find(findByNumber(ayah.number)).text,
+                    en: englishAyahs.find(findByNumber(ayah.number)).text,
+                    id: idAyahs.find(findByNumber(ayah.number)).text
                 }
             }))
         }
