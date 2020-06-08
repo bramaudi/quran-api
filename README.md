@@ -21,7 +21,7 @@ This API data source comes from the combination of several parameters from [api.
 ### Available Commands
 - `yarn start` = run server.
 - `yarn dev` = run develop server.
-- `yarn generate` = generate new Qur'an JSON.
+- `yarn generate` = collect new data from the data source, then unifying it in one JSON file.
 
 ### Data Source
 - `data/al-quran.json` combined & generated from `generator.js`.
