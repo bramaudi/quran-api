@@ -6,7 +6,7 @@
 Simple Quran API with media audio ***Syekh. Mishary Rashid Alafasy murrotal***.
 
 ### Disclaimer
-This API data source comes from the combination of several parameters from [api.alquran.cloud](https://api.alquran.cloud) by changing its structure for the better use. (Maybe next time, This API has many data source?)
+This API data source comes from the combination of several parameters from [api.alquran.cloud](https://api.alquran.cloud) by changing its structure for the better use and performance. (Maybe next time, This API has many data source?)
 
 ### Endpoint usage
 - [x] `/surah` = Returns the list of surahs in Al-Quran.
