@@ -14,7 +14,7 @@ This API data source comes from the combination of several parameters from [api.
 - [x] `/surah/{surah}/{ayah}` = Returns spesific ayah with requested surah. **Example: `/surah/2/255`**
 - [ ] Your requests ?
 
-### Fonts for Alqur'an optimized
+### Recommended fonts for Al-qur'an 
 - [quran.musil.com](http://quran.mursil.com/Web-Print-Publishing-Quran-Text-Graphics-Fonts-and-Downloads/fonts-optimized-for-quran)
 - [Uthmani](https://groups.google.com/forum/#!topic/colteachers/Y6iKganK0tQ)
 
