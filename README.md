@@ -23,6 +23,10 @@ This API data source comes from the combination of several parameters from [api.
 - `yarn dev` = run develop server.
 - `yarn generate` = generate new Qur'an JSON.
 
+### Data Source
+- `data/al-quran.json` combinated & generated from `generator.js`.
+- `data/surah-id.json` scraped from [quran.kemenag.go.id List ayah](https://quran.kemenag.go.id) (for indonesia ayah transalations)
+
 ### LICENSE
 MIT
 
