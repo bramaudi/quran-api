@@ -48,7 +48,7 @@ const operate = async (surah, tryFlag = false) => {
 
 async function main() {
     console.log('Fetching all surah...\n')
-    const response = await Promise.all(range(1, 114).map(surah => operate(surah)))
+    const response = await Promise.all(range(1, 114).map(operate))
 
     console.log('\nFetching all surah (DONE).')
     process.stdout.write('\n> Writing Data..')
